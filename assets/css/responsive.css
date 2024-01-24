@@ -1,0 +1,148 @@
+@media screen and (min-width: 992px) {}
+
+/* ## Tablet,  mobile */
+@media screen and (max-width: 991.9px) {
+    .header-menu-drawer {
+        position: relative;
+        display: flex;
+    }
+
+    .header-menu-drawer .nav-items {
+        z-index: 1;
+        translate: 0 -60%;
+        scale: 0;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        width: 110px;
+        background: #f6f6f6;
+        border-radius: 4px;
+    }
+
+    .header-menu-drawer .nav-items::before {
+        position: absolute;
+        bottom: 100%;
+        left: 6px;
+        content: "";
+        display: block;
+        border-color: transparent transparent #f6f6f6 transparent;
+        border-width: 12px;
+        border-style: solid;
+
+    }
+
+    .header-menu-drawer .nav-item {
+        width: 100%;
+    }
+
+    .header-menu-drawer .nav-link {
+        display: block;
+        width: 100%;
+        padding: 4px 8px;
+        color: #696D76;
+        text-align: left;
+        font-size: 1.6rem;
+        line-height: 1.75;
+    }
+
+    .header-menu-drawer #menu-toggle:checked~.nav-items {
+        translate: 0 0;
+        scale: 1;
+        transition: scale, translate;
+        transition-duration: 0.2s;
+    }
+
+    .header-navbar .nav-items {
+        display: none;
+    }
+
+    .hero-mobile .secured-funds {
+        right: 0;
+    }
+
+    .hero-mobile .deposite {
+        left: 0;
+    }
+
+    .hero-right .interest {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ## Tablet */
+@media (min-width: 768px) and (max-width: 991.9px) {
+    .header {
+        top: -8px;
+    }
+
+    .header-inner {
+        padding: 24px 0 16px;
+    }
+
+    .feature1-right .atm-card-expire .label,
+    .feature1-right .atm-card-owner .cardholder {
+        color: #FFF;
+        font-size: 1.6rem;
+    }
+
+    .feature1-right .atm-card-expire .time,
+    .feature1-right .atm-card-owner .name {
+        color: #FFF;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
+
+/* ## Mobile */
+@media (max-width: 767.9px) {
+    .hero {
+        margin-top: -78px;
+    }
+
+    .hero,
+    .work,
+    .feature1,
+    .feedback,
+    .blog {
+        padding-top: 80px;
+    }
+
+    .hero-right,
+    .feature1-right,
+    .feature2-right {
+        padding-top: 68px;
+    }
+
+    .header {
+        top: 0;
+    }
+
+    .header-inner {
+        padding: 16px 0;
+    }
+
+    .header-actions {
+        column-gap: 16px;
+    }
+
+    .work-left {
+        display: none;
+    }
+
+    .feature1-right .atm-card-expire .label,
+    .feature1-right .atm-card-owner .cardholder {
+        color: #FFF;
+        font-size: 1.4rem;
+    }
+
+    .feature1-right .atm-card-expire .time,
+    .feature1-right .atm-card-owner .name {
+        color: #FFF;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    .blog-head {
+        column-gap: 24px;
+    }
+}
