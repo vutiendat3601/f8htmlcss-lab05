@@ -14,21 +14,28 @@ if (numOfItems > 0) {
   let index = 0;
   let intervalId = -1;
   let timeoutId = -1;
-  let clientX = 0;
+  let startX = 0;
   feedbackSlide.ontouchstart = (e) => {
-    clientX = e.touches[0].clientX;
+    clearIntervalAndTimeout();
+    startX = e.touches[0].clientX;
   };
   feedbackSlide.ontouchmove = (e) => {
-    clearIntervalAndTimeout();
-    const offsetX = e.touches[0].clientX - clientX;
-    if (offsetX > 0) {
-      if (0 < index) {
-        showFeedback(index - 1);
+    if (!startX) return;
+
+    let currentX = e.touches[0].clientX;
+    let deltaX = currentX - startX;
+
+    if (Math.abs(deltaX) > 60) {
+      if (deltaX > 0) {
+        if (index > 0) {
+          showFeedback(index - 1);
+        }
+      } else {
+        if (index < numOfItems - 1) {
+          showFeedback(index + 1);
+        }
       }
-    } else if (offsetX < 0) {
-      if (index < numOfItems - 1) {
-        showFeedback(index + 1);
-      }
+      startX = null;
     }
   };
   function autoSliding() {
