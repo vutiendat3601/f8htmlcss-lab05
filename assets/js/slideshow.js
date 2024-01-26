@@ -28,35 +28,39 @@ if (numOfItems > 0) {
     if (Math.abs(deltaX) > 60) {
       if (deltaX > 0) {
         if (index > 0) {
-          showFeedback(index - 1);
+          showFeedback(nextIndex(index, numOfItems));
         }
       } else {
         if (index < numOfItems - 1) {
-          showFeedback(index + 1);
+          showFeedback(previousIndex(index));
         }
       }
       startX = null;
     }
   };
+  function nextIndex(index, numOfItems) {
+    index = index < 0 ? -index : index;
+    return (index + 1) % numOfItems;
+  }
+  function previousIndex(index) {
+    index = index < 0 ? -index : index;
+    return (index - 1) % numOfItems;
+  }
   function autoSliding() {
     intervalId = setInterval(() => {
       let width = feedbackItemElems[0].offsetWidth;
       slideshowControl.children[index]?.classList.remove('active');
       if (prevIndex < index) {
         prevIndex = index;
-        index = ++index % numOfItems;
+        index = nextIndex(index, numOfItems);
         prevIndex = index >= numOfItems - 1 ? numOfItems : prevIndex;
       } else {
         prevIndex = index;
-        index = --index % numOfItems;
+        index = previousIndex(index);
         prevIndex = index <= 0 ? -1 : prevIndex;
       }
       // slideshowControl.children
 
-      root.style.setProperty(
-        '--feedback-slide-translate',
-        `calc((${-width}px - var(--spacer-x)) * ${index})`
-      );
       slideshowControl.children[index]?.classList.add('active');
       feedbackSlide.style.setProperty(
         'transform',
